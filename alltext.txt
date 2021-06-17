@@ -1,0 +1,704 @@
+// console.log(object['data'][i]);// all data
+    console.log(object['data'][i]['first_name']);// first_name data
+    console.log(object['data'][i]['last_name']);// last_name
+    console.log(object['data'][i]['position']);//position
+    console.log(object['data'][i]['team']['full_name']);//full name
+    console.log(object['data'][i]['team']['city']);//team city
+
+
+
+
+
+
+
+
+
+
+
+
+
+function homePage() {
+var index =1
+var request = new XMLHttpRequest();
+(function loop(i, length) {
+  if (i >= length) {
+    return;
+  }
+  var url = 'https://free-nba.p.rapidapi.com/players?per_page=100&page='+i+'';
+
+  request.open("GET", url);
+  request.onreadystatechange = function () {
+    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+      // var data = JSON.parse(request.responseText);
+      // console.log('-->' + i + ' id: ' + data._id);
+      if (this.readyState === this.DONE) {
+        console.log(this.responseText);
+        var object = JSON.parse(this.responseText)
+        // console.log(object);
+        for (let i = 0; i < object['data'].length; i++) {
+          var first_Name = "First Name :" + object['data'][i]['first_name']
+          var last_Name = "Last Name :" + object['data'][i]['last_name']
+          var positionVerify = object['data'][i]['position']
+          var posVerified = positionVerify.length == 0 ? 'Not Available' : positionVerify
+          var position = "Position :" + posVerified
+          var city = "City :" + object['data'][i]['team']['city']
+          var team_Name = "Team :" + object['data'][i]['team']['full_name']
+          var datatoAdd = '<li><p>' + first_Name + '</p><p>' + last_Name + '</p><p>' + position + '</p>' + city + '<p></p><p>' + team_Name + '</p></li>'
+          var playerHtml = document.querySelector('.player-data')
+          playerHtml.innerHTML += datatoAdd;
+        }
+
+      }
+      loop(i + 1, length);
+    }
+  }
+  // xhr.open("GET", "https://free-nba.p.rapidapi.com/players?per_page=100&page=0");
+  request.setRequestHeader("x-rapidapi-key", "0041d2d4d9mshf15e63a22dd6fe5p106cd3jsn33e1a3bfaef5");
+  request.setRequestHeader("x-rapidapi-host", "free-nba.p.rapidapi.com");
+  request.send();
+})(0, index.length);
+
+}
+
+
+
+
+
+
+
+"data":[30 items
+0:{7 items
+"id":1
+"abbreviation":"ATL"
+"city":"Atlanta"
+"conference":"East"
+"division":"Southeast"
+"full_name":"Atlanta Hawks"
+"name":"Hawks"
+}
+
+
+
+
+//Team search
+
+// var button = document.querySelector("input[type='submit']")
+// button.addEventListener('click', searchTeam)
+
+// function searchTeam() {
+//   var inputValue = document.querySelector("input[type='text']")
+//   if (inputValue.value.length==0){
+//     errormsg()
+//   }
+//   var inputval = inputValue.value.toLowerCase();
+//   var noteCards = document.getElementsByClassName('team-list');
+//   Array.from(noteCards).forEach(function (element) {
+//     var cardTxt = element.getElementsByTagName("p")[0].innerText.toLowerCase();
+//     if (cardTxt.includes(inputval)) {
+//       element.style.display = 'block';
+//     } else {
+//       element.style.display = 'none';
+//     }
+//   })
+// }
+
+
+
+
+// valid input checking
+// function team_validation() {
+//   var TeamName = document.querySelector("input[type='text']")
+//   var p = document.querySelector('.pop-up')
+//   var contains = document.querySelector('.team-input').contains(p)
+//   if (contains) {
+//     p.remove()
+//   }
+//   var letters = /^[A-Za-z]+$/
+//   if (TeamName.value.match(letters)) {
+//     var p = document.querySelector('.pop-up')
+//     var contains = document.querySelector('.team-input').contains(p)
+//     if (contains) {
+//       p.remove()
+//     }
+//   } 
+//   else if (!TeamName.value.match(letters)) {
+//     var html = '<p class="pop-up">Team name should not be empty or  contain a numbers </p>'
+//     var inputDiv = document.querySelector('.team-input')
+//     var p = document.querySelector('.pop-up')
+//     inputDiv.contains(p) ? '' : (inputDiv.innerHTML += html)
+//   }
+// }
+
+
+
+
+
+data: Array(25) [ {…}, {…}, {…}, … ]
+​​
+0: Object { id: 14, first_name: "Ike", last_name: "Anigbogu", … }
+​​​
+first_name: "Ike"
+​​​
+height_feet: null
+​​​
+height_inches: null
+​​​
+id: 14
+​​​
+last_name: "Anigbogu"
+​​​
+position: "C"
+​​​
+team: Object { id: 12, abbreviation: "IND", city: "Indiana", … }
+​​​​
+abbreviation: "IND"
+​​​​
+city: "Indiana"
+​​​​
+conference: "East"
+​​​​
+division: "Central"
+​​​​
+full_name: "Indiana Pacers"
+​​​​
+id: 12
+​​​​
+name: "Pacers"
+
+
+
+
+
+"data":[100 items
+0:{
+11 items
+"id":47179
+"date":"2019-01-30T00:00:00.000Z"
+"home_team":{7 items
+"id":2
+"abbreviation":"BOS"
+"city":"Boston"
+"conference":"East"
+"division":"Atlantic"
+"full_name":"Boston Celtics"
+"name":"Celtics"
+}
+"home_team_score":126
+"period":4
+"postseason":false
+"season":2018
+"status":"Final"
+"time":" "
+"visitor_team":{7 items
+"id":4
+"abbreviation":"CHA"
+"city":"Charlotte"
+"conference":"East"
+"division":"Southeast"
+"full_name":"Charlotte Hornets"
+"name":"Hornets"
+}
+"visitor_team_score":94
+}
+
+
+
+    var p2 = element.querySelector('li p:nth-child(n+5):nth-child(-n+7)')
+    var p1 = element.querySelector('li p:nth-child(n+1):nth-child(-n+3)')\
+
+
+
+https://www.balldontlie.io/api/v1/players?search=
+
+
+
+
+https://www.balldontlie.io/api/v1/games?dates[]=2018-02-23
+
+https://www.balldontlie.io/api/v1/games?seasons[]=2019
+
+
+
+
+
+
+
+
+data: Array [ {…}, {…} ]
+​​
+0: Object { id: 28467, date: "2015-01-01T00:00:00.000Z", home_team_score: 107, … }
+​​​
+date: "2015-01-01T00:00:00.000Z"
+​​​
+home_team: Object { id: 18, abbreviation: "MIN", city: "Minnesota", … }
+​​​​
+abbreviation: "MIN"
+​​​​
+city: "Minnesota"
+​​​​
+conference: "West"
+​​​​
+division: "Northwest"
+​​​​
+full_name: "Minnesota Timberwolves"
+​​​​
+id: 18
+​​​​
+name: "Timberwolves"
+​​​​
+<prototype>: Object { … }
+​​​
+home_team_score: 107
+​​​
+id: 28467
+​​​
+period: 4
+​​​
+postseason: false
+​​​
+season: 2014
+​​​
+status: "Final"
+​​​
+time: " "
+​​​
+visitor_team: Object { id: 26, abbreviation: "SAC", city: "Sacramento", … }
+​​​​
+abbreviation: "SAC"
+​​​​
+city: "Sacramento"
+​​​​
+conference: "West"
+​​​​
+division: "Pacific"
+​​​​
+full_name: "Sacramento Kings"
+​​​​
+id: 26
+​​​​
+name: "Kings"
+​​​​
+<prototype>: Object { … }
+​​​
+visitor_team_score: 110
+
+
+
+
+
+
+for (let i = 0; i < object['data'].length; i++) {
+        var match_date = "Date : " + object['data'][i]['game']['date'].substring(0, 10);
+        var home_team = "Home Team : " + object['data'][i]['home_team']['full_name']
+        var home_city = "City : " + object['data'][i]['home_team']['city']
+        var homeTeam_score = "Home Team Score :" + object['data'][i]['home_team_score']
+        var season = "Season : " + object['data'][i]['season']
+        var visitor_team = "Visitor Team : " + object['data'][i]['visitor_team']['full_name']
+        var visitor_city = "Visitor City : " + object['data'][i]['visitor_team']['city']
+        var visitorTeam_score = "Visitor Team Score : " + object['data'][i]['visitor_team_score']
+        var datatoAdd = '<li class ="teams"><p>' + match_date + '</p><p>' + season + '</p><p>' + home_team + '</p><p>' + home_city + '</p><p>' + homeTeam_score + '</p><p>Vs</p><p>' + visitor_team + '</p><p>' + visitor_city + '</p><p>' + visitorTeam_score + '</p></li>'
+        var gameHtml = document.querySelector('.game-data')
+        gameHtml.innerHTML += datatoAdd;
+
+
+
+
+https://www.balldontlie.io/api/v1/stats?per_page=100&page=0?&player_ids[]=145&dates[]=2018-10-16   //by date
+
+
+https://www.balldontlie.io/api/v1/stats?per_page=100&page=0?seasons[]=2018&seasons[]=2015&player_ids[]=1389   //by season
+
+
+
+
+https://www.balldontlie.io/api/v1/stats?per_page=100&page=0?&seasons[]=2018&seasons[]=2015&dates[]=2018-10-16&player_ids[]=1
+
+
+//by date season and player  ids
+
+https://www.balldontlie.io/api/v1/stats?per_page=100&page=0?&seasons[]=2018&dates[]=2018-10-16&player_ids[]=1
+
+
+
+
+
+var inputData = document.querySelector("input[type='text']")
+
+inputData.addEventListener('blur', team_validation)
+//valid input checking
+function team_validation() {
+  var teamName = document.querySelector("input[type='text']")
+  if (teamName.value.length== 0){
+    return true;
+  }
+  var letters = /\b[^\d\W]+\b/
+  if (teamName.value.match(letters)) {
+    var p = document.querySelector('.pop-up')
+    var contains = document.querySelector('.team-input').contains(p)
+    if (contains) {
+      p.remove()
+    }
+    return true
+  } 
+  else if (!teamName.value.match(letters)) {
+    var html = '<p class="pop-up">First name should not  contain numbers </p>'
+    var inputDiv = document.querySelector('.team-input')
+    var p = document.querySelector('.pop-up')
+    inputDiv.contains(p) ? '' : (inputDiv.innerHTML += html)
+    showallData()
+    return false
+  }
+}
+
+
+
+element {
+    padding: 9px;
+    font-size: 17px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    margin-left: 15px;
+}
+
+
+
+var object = JSON.parse(this.responseText)
+      var totalPages = object['meta']['total_pages']
+      var currPage = object['meta']['current_page']
+      var nextPage = object['meta']['next_page']
+      if(currPage<totalPages){
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+#Player Page
+
+player page when loaded will display players cards 
+which contains basic info of the players i.e name,team name etc.
+
+When searched for a specific player it will display specific players
+card and if there are multiple players it will show multiple player. card
+
+If there is an error while inputting text a para tag will appear below
+mentioning the error.
+
+
+
+
+#Team Page
+
+Team page loads all the team once the page is loaded
+Search bar takes text as input and matches the inputted value 
+with the team name and changes its property to block or none 
+via css styling.
+
+
+
+#Game Page
+
+Game page loads the game once the pages is loaded.
+It highlights the winner of the game also in light green
+background.
+
+There is also a option to search by date 
+or
+Search by Seasons
+
+** note : Sometime on search by date if there is no game on that date ERROR WRONG INPUT POP UP will appear**
+
+
+
+#Stats Page
+
+Stats page will load nothing.
+
+there are 3 options
+1)Select start season 
+2)Select end season 
+3)Player Name
+
+when all three are correctly inputted then the stats of given player will load.
+
+
+
+
+//stats change
+
+html
+
+<div class="stat-input">
+													<div>
+															<label for="seasons-s">Select start Seasons</label>
+															<select id="seasons-s" name="seasons-s" onblur="SeasonStart_valid()" >
+																<option selected value="Default">Select Seasons</option>
+																<option value="2000">2000</option>
+																<option value="2001">2001</option>
+																<option value="2002">2002</option>
+																<option value="2003">2003</option>
+																<option value="2004">2004</option>
+																<option value="2005">2005</option>
+																<option value="2006">2006</option>
+																<option value="2007">2007</option>
+																<option value="2008">2008</option>
+																<option value="2009">2009</option>
+																<option value="2010">2010</option>
+																<option value="2011">2011</option>
+																<option value="2012">2012</option>
+																<option value="2013">2013</option>
+																<option value="2014">2014</option>
+																<option value="2015">2015</option>
+																<option value="2016">2016</option>
+																<option value="2017">2017</option>
+																<option value="2018">2018</option>
+																<option value="2019">2019</option>
+																<option value="2020">2020</option>
+																<option value="2021">2021</option>
+															</select>
+													</div>
+													<div class="season-select">
+															<label for="seasons-e">Select end Seasons</label>
+															<select id="seasons-e" name="seasons-e" onblur="SeasonEnd_valid()">
+																<option selected value="Default">Select Seasons</option>
+																<option value="2000">2000</option>
+																<option value="2001">2001</option>
+																<option value="2002">2002</option>
+																<option value="2003">2003</option>
+																<option value="2004">2004</option>
+																<option value="2005">2005</option>
+																<option value="2006">2006</option>
+																<option value="2007">2007</option>
+																<option value="2008">2008</option>
+																<option value="2009">2009</option>
+																<option value="2010">2010</option>
+																<option value="2011">2011</option>
+																<option value="2012">2012</option>
+																<option value="2013">2013</option>
+																<option value="2014">2014</option>
+																<option value="2015">2015</option>
+																<option value="2016">2016</option>
+																<option value="2017">2017</option>
+																<option value="2018">2018</option>
+																<option value="2019">2019</option>
+																<option value="2020">2020</option>
+																<option value="2021">2021</option>
+															</select>
+													</div>
+													<div class='player-input'>
+														<input type="text" name="player-input" placeholder="type name" onblur="player_validation()">
+													</div>
+													<div>
+														<input type='button' name="name-submit" title="Search stats" 	value="Search" onclick="homePage()">
+													</div>	
+												</div>
+
+
+htl=ml ends
+
+js
+
+
+
+
+//season start validation
+function SeasonStart_valid() {
+  var season1 = document.querySelector('select[name = "seasons-s"]')
+  if (season1.value == 'Default') {
+    var html = '<p class="pop-up">Please select a season</p>'
+    var Label = document.querySelector('label[for ="seasons-s"]')
+    var p = document.querySelector('.pop-up')
+    Label.contains(p) ? '' : (Label.innerHTML += html)
+    season1.focus()
+    return false
+  }
+  var p = document.querySelector('.pop-up')
+  var contains = document.querySelector('label[for ="seasons-s"]').contains(p)
+  if (contains) {
+    p.remove()
+  }
+}
+
+//season end validation
+function SeasonEnd_valid() {
+  var season2 = document.querySelector('select[name = "seasons-e"]')
+  if (season2.value == 'Default') {
+    var html = '<p class="pop-up2">Please select a season</p>'
+    var Label = document.querySelector('label[for ="seasons-e"]')
+    var p = document.querySelector('.pop-up2')
+    Label.contains(p) ? '' : (Label.innerHTML += html)
+    season2.focus()
+    return false
+  }
+  var p = document.querySelector('.pop-up2')
+  var contains = document.querySelector('label[for ="seasons-e"]').contains(p)
+  if (contains) {
+    p.remove()
+  }
+}
+
+
+
+
+
+//Search Stats Display
+//This function will trigger on submit
+function homePage() {
+
+  var inputValue = document.querySelector("input[type='text']").value
+  if (inputValue.length == 0) {
+    errormsg()
+  }
+  //1 initialize AJAX
+  var xhr = new XMLHttpRequest()
+  //2 open object
+  xhr.open('GET','https://www.balldontlie.io/api/v1/players?search='+inputValue+'',true) //getting player id by inputting name
+  console.log(inputValue);
+  xhr.onload = function () {
+    if (this.status === 200) {
+      var object2 = JSON.parse(this.responseText)
+      if (object2['data'].length === 0) {
+        errormsg()
+      }
+      console.log(object2)
+        var playerId = object2['data'][0]['id'];
+        console.log(playerId);
+      data(playerId) //passing player id to another function
+    } else {
+      errormsg()
+    }
+  }
+  //5 send request
+  xhr.send()
+}
+
+function data(id){
+  var season_sValue = document.querySelector("select[name='seasons-s']");
+  var seasonsVal = season_sValue.options[season_sValue.selectedIndex].text;
+  if (seasonsVal.length === 0) {
+    errormsg()
+  }
+
+  var season_eValue = document.querySelector("select[name='seasons-e']");
+  var seasoneVal = season_eValue.options[season_eValue.selectedIndex].text;
+  if (seasoneVal.length === 0) {
+    errormsg()
+  }
+
+  if (parseInt(seasonsVal) > parseInt(seasoneVal)){
+    errormsg()
+    return false
+  }
+  //1 initialize AJAX
+  var xhr = new XMLHttpRequest()
+  //2 open object
+  //inputting  user data and player id to get all stats
+  xhr.open('GET','https://www.balldontlie.io/api/v1/stats?per_page=100&seasons[]='+seasoneVal+'&seasons[]='+seasonsVal+'&player_ids[]='+id+'',true)
+  //3 onload object
+  xhr.onload = function () {
+    if (this.status === 200) {
+      var object2 = JSON.parse(this.responseText)
+      if (object2['data'].length === 0) {
+        errormsg()
+      }
+      var statsHtml = document.querySelector('.stats-data')
+      statsHtml.innerHTML = ''
+      console.log(object2)
+      for (var i = 0; i < object2['data'].length; i++) {
+        var date = "Date : " +object2['data'][i]['game']['date'].substring(0, 10)
+        var season = "Season : " +object2['data'][i]['game']['season']
+        var pfirstName = "First Name : " +object2['data'][i]['player']['first_name']
+        var plastName = "Last Name : " +object2['data'][i]['player']['last_name']
+        var positionVerify = object2['data'][i]['player']['position']
+        var posVerified = positionVerify.length == 0 ? 'Not Available' : positionVerify
+        var position = "Position :" + posVerified
+        var team = "Team : " +object2['data'][i]['team']['full_name']
+        var assistverify = object2['data'][i]['ast'] == null ? 'Not Available' : object2['data'][i]['ast']
+        var assist = "Assist : " + assistverify
+        var blocksverify = object2['data'][i]['blk'] == null ? 'Not Available' : object2['data'][i]['blk']
+        var blocks = "Blocks : " + blocksverify
+        var def_verify = object2['data'][i]['dreb'] == null ? 'Not Available' : object2['data'][i]['dreb']
+        var def_rebound = "Defencive Rebound : " + def_verify
+        var threeprecent_verify = object2['data'][i]['fg3_pct'] == null ? 'Not Available' : object2['data'][i]['fg3_pct']
+        var three_pgpercent = "3 point Percentage (%) : " + threeprecent_verify
+        var threeattemt_verify = object2['data'][i]['fg3a'] == null ? 'Not Available' : object2['data'][i]['fg3a']
+        var three_pgpattempt = "3 point Attempts : " + threeattemt_verify
+        var threemade_verify = object2['data'][i]['fg3m'] == null ? 'Not Available' : object2['data'][i]['fg3m']
+        var three_pgpmade = "3 point Made : " + threemade_verify
+        var goalpercent_verify = object2['data'][i]['fg_pct'] == null ? 'Not Available' : object2['data'][i]['fg_pct']
+        var field_goalpercent = "Field Goal Percentage (%) : " + goalpercent_verify
+        var goalattempt_verify = object2['data'][i]['fga'] == null ? 'Not Available' : object2['data'][i]['fga']
+        var field_goalattempted = "Field Goal Attempts : " + goalattempt_verify
+        var goalmade_verify = object2['data'][i]['fgm'] == null ? 'Not Available' : object2['data'][i]['fgm']
+        var field_goalmade = "Field Goal Made : " + goalmade_verify
+        var freethrowpercent_verify = object2['data'][i]['ft_pct'] == null ? 'Not Available' : object2['data'][i]['ft_pct']
+        var free_throwpercent = "Free Throw Percentage (%)  : " + freethrowpercent_verify
+        var freethrowattempt_verify = object2['data'][i]['fta'] == null ? 'Not Available' : object2['data'][i]['fta']
+        var free_throwattemt = "Free Throw Attempt  : " + freethrowattempt_verify
+        var freethrowmade_verify = object2['data'][i]['ftm'] == null ? 'Not Available' : object2['data'][i]['ftm']
+        var free_throwmade = "Free Throw Made  : " + freethrowmade_verify
+        var points_verify = object2['data'][i]['pts'] == null ? 'Not Available' : object2['data'][i]['pts']
+        var points = "Points by Player  : " + points_verify
+        var rebound_verify = object2['data'][i]['reb'] == null ? 'Not Available' : object2['data'][i]['reb']
+        var rebound = "Rebound: " + rebound_verify
+        var steal_verify = object2['data'][i]['stl'] == null ? 'Not Available' : object2['data'][i]['stl']
+        var steal = "Steal : " + steal_verify
+
+        var datatoAdd = '<li><p>' + date + '</p><p>' + season + '</p><p>' + pfirstName + '</p><p>' + plastName + '</p><p>' + position + '</p><p>' + team + '</p><p>' + assist + '</p><p>' + blocks + '</p><p>' + def_rebound + '</p><p>' + three_pgpercent + '</p><p>' + three_pgpattempt + '</p><p>' + three_pgpmade + '</p><p>' + field_goalpercent + '</p><p>' + field_goalattempted + '</p><p>' + field_goalmade + '</p><p>' + free_throwpercent + '</p><p>' + free_throwattemt + '</p><p>' + free_throwmade + '</p><p>' + points + '</p><p>' + rebound + '</p><p>' + steal + '</p></li>'
+        var statsHtml = document.querySelector('.stats-data')
+        statsHtml.innerHTML += datatoAdd;
+      }
+    } else {
+      errormsg()
+    }
+  }
+  //4 send request
+  xhr.send()
+}
+
+
+
+
+
+//valid input checking
+function player_validation() {
+  var PlayerName = document.querySelector("input[type='text']")
+  var pname_len = PlayerName.value.length
+  if (pname_len == 0) {
+    var html = '<p class="pop-up3">Name should not be empty </p>'
+    var inputDiv = document.querySelector('.player-input')
+    var p = document.querySelector('.pop-up3')
+    inputDiv.contains(p) ? '' : (inputDiv.innerHTML += html)
+    PlayerName.focus()
+    return false
+  }
+  var p = document.querySelector('.pop-up3')
+  var contains = document.querySelector('.player-input').contains(p)
+  if (contains) {
+    p.remove()
+  }
+  var letters = /\b[^\d\W]+\b/
+  if (PlayerName.value.match(letters)) {
+    var p = document.querySelector('.pop-up3')
+    var contains = document.querySelector('.player-input').contains(p)
+    if (contains) {
+      p.remove()
+    }
+  } else if (!PlayerName.value.match(letters)) {
+    var html = '<p class="pop-up3">Name should not  contain numbers </p>'
+    var inputDiv = document.querySelector('.player-input')
+    var p = document.querySelector('.pop-up3')
+    inputDiv.contains(p) ? '' : (inputDiv.innerHTML += html)
+    PlayerName.focus()
+    return false
+  }
+}

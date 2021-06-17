@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>NBA Basketball league | Players</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" media="screen" href="./Players/assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" media="screen" href="./Players/assets/css/style.css" />
+</head>
+<body onload="homePage()" >
+    <!--container start-->
+    <div class="container">
+        <!--header section start-->
+        <header>
+            <div class="wrapper">
+                <h1><a href="./index.html" title='NBA League'>NBA League</a></h1>
+                <nav>
+                    <div class="hambur">
+                        <span>line</span>
+                        <span>line</span>
+                        <span>line</span>
+                    </div>
+                    <ul class='nav-list'>
+                        <li><a href="./index.html" title='Players'>Players</a></li>
+                        <li><a href="./Teams/index.html" title='Teams'>Teams</a></li>
+                        <li><a href="./Games/index.html" title='Games'>Games</a></li>
+                        <li><a href="./Stats/index.html" title='Stats'>Stats</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!--header section ends-->
+        <!--main section start-->
+        <main>
+        <!-- all player data section start -->
+            <section class="all-player-data">
+                <div class="wrapper">
+										<!-- player-input start -->
+											<div class="player-input">
+												<div class='text-input'>
+													<input type='text' onblur="player_validation()" placeholder="Search Players">
+												</div>
+												<div>
+													<input type='button' onclick="searchPlayers()" title="Search Players" value="Submit">
+												</div>
+											</div>
+										<!-- player-input ends -->
+										<!-- player-data starts -->
+										<h2>Players data</h2>
+										<ul class="player-data"></ul>
+											<div class="modal">
+													<div class="modal-content">
+															<span class="close">&times;</span>
+															<p>Error Wrong Input</p>
+													</div>
+											</div>
+											<div class="modal1">
+													<div class="modal-content1">
+															<span class="close1">&times;</span>
+															<p>Error Wrong Name</p>
+													</div>
+											</div>	
+									<!-- player-data ends -->
+                </div>
+            </section>
+						<!-- all player data section ends-->
+        </main>
+        <!--main section end-->
+    </div>
+    <!--container end-->
+    <script src="./Players/assets/js/script.js"></script>
+</body>
+</html>

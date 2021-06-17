@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>NBA Basketball league | Stats</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" media="screen" href="assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" media="screen" href="assets/css/style.css" />
+</head> 
+<body onload="WhenpageLoad()">
+    <!--container start-->
+    <div class="container">
+        <!--header section start-->
+        <header>
+            <div class="wrapper">
+                <h1><a href="../index.html" title='NBA League'>NBA League</a></h1>
+                <nav>
+                    <div class="hambur">
+                        <span>line</span>
+                        <span>line</span>
+                        <span>line</span>
+                    </div>
+                    <ul class='nav-list'>
+                        <li><a href="../index.html" title='Players'>Players</a></li>
+                        <li><a href="../Teams/index.html" title='Teams'>Teams</a></li>
+                        <li><a href="../Games/index.html" title='Games'>Games</a></li>
+                        <li><a href="../Stats/index.html" title='Stats'>Stats</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!--header section ends-->
+        <!--main section start-->
+        <main>
+        <!-- all stats data section start-->
+            <section class="all-stats-data">
+                <div class="wrapper">
+										<!-- stats-input start -->
+										<form action="#fixme" method="get">
+												<div class="search-only-by-player">
+															<div class="season-select">
+																<label for="seasons-1">Select Season</label>
+																<select id="seasons-1" name="seasons-1" onblur="Season_valid()">
+																	<option selected value="Default">Select Seasons</option>
+																	<option value="2000">2000</option>
+																	<option value="2001">2001</option>
+																	<option value="2002">2002</option>
+																	<option value="2003">2003</option>
+																	<option value="2004">2004</option>
+																	<option value="2005">2005</option>
+																	<option value="2006">2006</option>
+																	<option value="2007">2007</option>
+																	<option value="2008">2008</option>
+																	<option value="2009">2009</option>
+																	<option value="2010">2010</option>
+																	<option value="2011">2011</option>
+																	<option value="2012">2012</option>
+																	<option value="2013">2013</option>
+																	<option value="2014">2014</option>
+																	<option value="2015">2015</option>
+																	<option value="2016">2016</option>
+																	<option value="2017">2017</option>
+																	<option value="2018">2018</option>
+																	<option value="2019">2019</option>
+																	<option value="2020">2020</option>
+																	<option value="2021">2021</option>
+																</select>
+														</div>
+														<div class='player-input1'>
+															<input type="text" name="player-input1" placeholder="Player to search" onblur="player_validation1()">
+														</div>
+														<div>
+															<input type='button' name="name-submit1" title="Search stats" 	value="Search" onclick="searchPlayer()">
+														</div>
+												</div>
+										</form>
+										<!-- stats-input ends -->
+										<!-- stats-data starts -->
+										<h2>Stats data</h2>
+										<ul class="stats-data"></ul>
+										<div class="modal">
+												<div class="modal-content">
+														<span class="close">&times;</span>
+														<p>Error Wrong Input</p>
+												</div>
+										</div>
+										<div class="modal1">
+												<div class="modal-content1">
+														<span class="close1">&times;</span>
+														<p>Player did not played that season</p>
+												</div>
+										</div>
+									<!-- stats-data ends -->
+                </div>
+            </section>
+						<!-- all stats data section ends-->
+        </main>
+        <!--main section end-->
+    </div>
+    <!--container end-->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
