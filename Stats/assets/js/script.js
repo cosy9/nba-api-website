@@ -13,6 +13,13 @@ menuLinks.forEach(function (menuLink) {
   menuLink.addEventListener('click', toggleHamburger)
 })
 
+var loadDiv = document.querySelector('.fetch')
+loadDiv.classList.add('not-active-list')
+
+setTimeout(function () {
+  WhenpageLoad()
+},0);
+
 function WhenpageLoad() {
   //1 initialize AJAX
   var xhr = new XMLHttpRequest()
@@ -24,7 +31,7 @@ function WhenpageLoad() {
     if (this.status === 200) {
       var object2 = JSON.parse(this.responseText)
       if (object2['data'].length === 0) {
-        errormsg()
+        errormsg('No Stats Found')
         return false
       }
       var statsHtml = document.querySelector('.stats-data')
@@ -70,12 +77,15 @@ function WhenpageLoad() {
         var steal_verify = object2['data'][i]['stl'] == null ? 'Not Available' : object2['data'][i]['stl']
         var steal = "Steal : " + steal_verify
 
-        var datatoAdd = '<li><p>' + date + '</p><p>' + season + '</p><p>' + pfirstName + '</p><p>' + plastName + '</p><p>' + position + '</p><p>' + team + '</p><p>' + assist + '</p><p>' + blocks + '</p><p>' + def_rebound + '</p><p>' + three_pgpercent + '</p><p>' + three_pgpattempt + '</p><p>' + three_pgpmade + '</p><p>' + field_goalpercent + '</p><p>' + field_goalattempted + '</p><p>' + field_goalmade + '</p><p>' + free_throwpercent + '</p><p>' + free_throwattemt + '</p><p>' + free_throwmade + '</p><p>' + points + '</p><p>' + rebound + '</p><p>' + steal + '</p></li>'
+        var datatoAdd = '<li class ="teams not-active-list" ><p>' + date + '</p><p>' + season + '</p><p>' + pfirstName + '</p><p>' + plastName + '</p><p>' + position + '</p><p>' + team + '</p><p>' + assist + '</p><p>' + blocks + '</p><p>' + def_rebound + '</p><p>' + three_pgpercent + '</p><p>' + three_pgpattempt + '</p><p>' + three_pgpmade + '</p><p>' + field_goalpercent + '</p><p>' + field_goalattempted + '</p><p>' + field_goalmade + '</p><p>' + free_throwpercent + '</p><p>' + free_throwattemt + '</p><p>' + free_throwmade + '</p><p>' + points + '</p><p>' + rebound + '</p><p>' + steal + '</p></li>'
         var statsHtml = document.querySelector('.stats-data')
         statsHtml.innerHTML += datatoAdd;
       }
+      var loadDiv = document.querySelector('.fetch')
+      loadDiv.classList.remove('not-active-list')
+      loadMore()
     } else {
-      errormsg()
+      errormsg('Wrong Input')
     }
   }
   //4 send request
@@ -84,11 +94,20 @@ function WhenpageLoad() {
 
 //Search Stats Display
 //This function will trigger on submit
-function searchPlayer() {
+var inputSubmit = document.querySelector("input[name='name-submit1']")
+inputSubmit.addEventListener('click',searchPlayer)
 
+function searchPlayer(e) {
+  e.preventDefault();
   var inputValue = document.querySelector("input[name='player-input1']").value
   if (inputValue.length == 0) {
-    errormsg()
+    errormsg('Please Enter a Player Name')
+    return false
+  }
+    var season_sValue = document.querySelector("select[name='seasons-1']");
+  var seasonsVal = season_sValue.options[season_sValue.selectedIndex].text;
+  if (seasonsVal === 'Select Seasons') {
+    errormsg('Please Select a Season') 
     return false
   }
   //1 initialize AJAX
@@ -100,7 +119,7 @@ function searchPlayer() {
     if (this.status === 200) {
       var object2 = JSON.parse(this.responseText)
       if (object2['data'].length === 0) {
-        errormsg()
+        errormsg('Player did not play that season')
         return false
       }
       console.log(object2)
@@ -108,7 +127,7 @@ function searchPlayer() {
       console.log(playerId);
       data1(playerId) //passing player id to another function
     } else {
-      errormsg()
+      errormsg('Wrong Input')
     }
   }
   //5 send request
@@ -120,7 +139,7 @@ function data1(id) {
   var season_sValue = document.querySelector("select[name='seasons-1']");
   var seasonsVal = season_sValue.options[season_sValue.selectedIndex].text;
   if (seasonsVal === 'Select Seasons') {
-    errormsg() 
+    errormsg('Please Select a Season') 
     return false
   }
   //1 initialize AJAX
@@ -133,7 +152,7 @@ function data1(id) {
     if (this.status === 200) {
       var object2 = JSON.parse(this.responseText)
       if (object2['data'].length === 0) {
-        errormsg2()
+        errormsg('No player of That name Exist')
         return false
       }
       var statsHtml = document.querySelector('.stats-data')
@@ -178,15 +197,50 @@ function data1(id) {
         statsHtml.innerHTML += datatoAdd;
       }
     } else {
-      errormsg()
+      errormsg('Wrong Input')
     }
   }
   //4 send request
   xhr.send()
 }
 
-function errormsg() {
+
+
+
+// load more results on click of loadMore button
+function loadMore() {
+      var elementList = [...document.querySelectorAll('.stats-data .teams')];
+        for (let i = 0; i <= 4; i++) {
+            if (elementList[i]) {
+                elementList[i].classList.remove('not-active-list');
+            }
+        }
+
+    var loadmore = document.querySelector('#fetchBtn');
+    loadmore.classList.remove('not-active-list');
+    var currentItems = 5;
+    loadmore.addEventListener('click', (e) => {
+        var elementList = [...document.querySelectorAll('.stats-data .teams')];
+        for (let i = currentItems; i <= currentItems + 4; i++) {
+            if (elementList[i]) {
+                elementList[i].classList.remove('not-active-list');
+            }
+        }
+        currentItems += 4;
+        // Load more button will be hidden after list fully loaded
+        if (currentItems >= elementList.length) {
+            e.target.classList.add('not-active-list');
+            currentItems = 5;
+        }
+    })
+}
+
+
+function errormsg(errMsg) {
   // Get the modal
+  var paraClass = document.querySelector('.pop')
+  paraClass.innerHTML += ''
+  paraClass.innerText = errMsg
   modal.style.display = 'block'
 }
 var modal = document.querySelector('.modal')
@@ -203,72 +257,57 @@ window.onclick = function (element) {
   }
 }
 
-function errormsg2() {
-  // Get the modal
-  modal1.style.display = 'block'
-}
-var modal1 = document.querySelector('.modal1')
-// Get the <span> element that closes the modal
-var span1 = document.getElementsByClassName('close1')[0]
-// When the user clicks on <span> (x), close the modal
-span1.onclick = function () {
-  modal1.style.display = 'none'
-}
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (element) {
-  if (element.target == modal1) {
-    modal1.style.display = 'none'
-  }
-}
 
+var seasonValidation = document.querySelector('select[name = "seasons-1"]')
+
+seasonValidation.onblur = function(e){
 //season  validation
-function Season_valid() {
-  var season2 = document.querySelector('select[name = "seasons-1"]')
+  var season2 = e.target
   if (season2.value == 'Default') {
-    var html = '<p class="pop-up2">Please select a season</p>'
-    var Label = document.querySelector('label[for ="seasons-1"]')
-    var p = document.querySelector('.pop-up2')
-    Label.contains(p) ? '' : (Label.innerHTML += html)
+    var html = 'Please select a season'
+    var popUpPara = document.querySelector('.pop-up2')
+    popUpPara.innerText=html
     season2.focus()
     return false
   }
-  var p = document.querySelector('.pop-up2')
-  var contains = document.querySelector('label[for ="seasons-1"]').contains(p)
-  if (contains) {
-    p.remove()
+ var popUpPara = document.querySelector('.pop-up2')
+  if (popUpPara.childNodes.length) {
+    popUpPara.innerHTML=''
   }
 }
 
+
 //valid input checking
-function player_validation1() {
-  var PlayerName = document.querySelector("input[name='player-input1']")
-  var pname_len = PlayerName.value.length
-  if (pname_len == 0) {
-    var html = '<p class="pop-up3">Name should not be empty </p>'
-    var inputDiv = document.querySelector('.player-input1')
-    var p = document.querySelector('.pop-up3')
-    inputDiv.contains(p) ? '' : (inputDiv.innerHTML += html)
-    PlayerName.focus()
+var playerInputListen = document.querySelector("input[name='player-input1']")
+
+playerInputListen.onblur = function (e){
+//valid input checking
+  console.log('fired')
+  var playerInput = e.target
+  if (playerInput.value.length === 0){
+    var html = 'Name should not be empty'
+    var inputPara = document.querySelector('.pop-up3')
+    inputPara.innerText= html
+    playerInput.focus()
     return false
-  }
-  var p = document.querySelector('.pop-up3')
-  var contains = document.querySelector('.player-input1').contains(p)
-  if (contains) {
-    p.remove()
   }
   var letters = /\b[^\d\W]+\b/
-  if (PlayerName.value.match(letters)) {
-    var p = document.querySelector('.pop-up3')
-    var contains = document.querySelector('.player-input1').contains(p)
-    if (contains) {
-      p.remove()
-    }
-  } else if (!PlayerName.value.match(letters)) {
-    var html = '<p class="pop-up3">Name should not  contain numbers </p>'
-    var inputDiv = document.querySelector('.player-input1')
-    var p = document.querySelector('.pop-up3')
-    inputDiv.contains(p) ? '' : (inputDiv.innerHTML += html)
-    PlayerName.focus()
+  
+    if (!playerInput.value.match(letters)) 
+   {
+    var html = 'Name should not  contain numbers'
+    var inputPara = document.querySelector('.pop-up3')
+    inputPara.childNodes.length != 0  ? inputPara.innerHTML ='' : (inputPara.innerText += html)
+    playerInput.focus()
     return false
+  }
+
+  if(playerInput.value.match(letters)) 
+  {
+    var inputPara = document.querySelector('.pop-up3')
+    if (inputPara.childNodes.length !=0) {
+      inputPara.innerHTML =''
+    }
+    return true
   }
 }

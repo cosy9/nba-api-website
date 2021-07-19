@@ -1,73 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <title>NBA Basketball league | Players</title>
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" media="screen" href="./Players/assets/vendor/font-awesome/css/all.min.css">
-    <link rel="stylesheet" media="screen" href="./Players/assets/css/style.css" />
+<meta charset="utf-8"/>
+<title>NBA Basketball league | Players</title>
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="stylesheet" media="screen" href="./Players/assets/vendor/font-awesome/css/all.min.css">
+<link rel="stylesheet" media="screen" href="./Players/assets/css/style.css" />
 </head>
-<body onload="homePage()" >
-    <!--container start-->
-    <div class="container">
-        <!--header section start-->
-        <header>
-            <div class="wrapper">
-                <h1><a href="./index.html" title='NBA League'>NBA League</a></h1>
-                <nav>
-                    <div class="hambur">
-                        <span>line</span>
-                        <span>line</span>
-                        <span>line</span>
-                    </div>
-                    <ul class='nav-list'>
-                        <li><a href="./index.html" title='Players'>Players</a></li>
-                        <li><a href="./Teams/index.html" title='Teams'>Teams</a></li>
-                        <li><a href="./Games/index.html" title='Games'>Games</a></li>
-                        <li><a href="./Stats/index.html" title='Stats'>Stats</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <!--header section ends-->
-        <!--main section start-->
-        <main>
-        <!-- all player data section start -->
-            <section class="all-player-data">
-                <div class="wrapper">
-										<!-- player-input start -->
-											<div class="player-input">
-												<div class='text-input'>
-													<input type='text' onblur="player_validation()" placeholder="Search Players">
-												</div>
-												<div>
-													<input type='button' onclick="searchPlayers()" title="Search Players" value="Submit">
-												</div>
-											</div>
-										<!-- player-input ends -->
-										<!-- player-data starts -->
-										<h2>Players data</h2>
-										<ul class="player-data"></ul>
-											<div class="modal">
-													<div class="modal-content">
-															<span class="close">&times;</span>
-															<p>Error Wrong Input</p>
-													</div>
-											</div>
-											<div class="modal1">
-													<div class="modal-content1">
-															<span class="close1">&times;</span>
-															<p>Error Wrong Name</p>
-													</div>
-											</div>	
-									<!-- player-data ends -->
-                </div>
-            </section>
-						<!-- all player data section ends-->
-        </main>
-        <!--main section end-->
-    </div>
-    <!--container end-->
-    <script src="./Players/assets/js/script.js"></script>
+<body >
+<!--container start-->
+<div class="container">
+	<!--header section start-->
+	<header>
+	<div class="wrapper">
+	<h1><a href="./index.html" title='NBA League'>NBA League</a></h1>
+	<nav>
+		<div class="hambur">
+				<span>line</span>
+		</div>
+		<ul class='nav-list'>
+				<li><a href="./index.html" title='Players'>Players</a></li>
+				<li><a href="./Teams/index.html" title='Teams'>Teams</a></li>
+				<li><a href="./Games/index.html" title='Games'>Games</a></li>
+				<li><a href="./Stats/index.html" title='Stats'>Stats</a></li>
+		</ul>
+	</nav>
+	</div>
+	</header>
+	<!--header section ends-->
+	<!--main section start-->
+	<main>
+	<!-- all player data section start -->
+	<section class="all-player-data">
+	<div class="wrapper">
+		<!-- player-input start -->
+		<form action="#fixme">
+			<div class="player-input">
+				<div class='text-input'>
+					<input type='text' name="player-input" placeholder="Search Players" required >
+					<p class="pop-up"></p>
+				</div>
+				<div>
+					<input type='submit' title="Search Players" value="Submit">
+				</div>
+			</div>
+		</form>
+		<!-- player-input ends -->
+		<!-- player-data starts -->
+		<h2>Players data</h2>
+		</div>
+		<ul class="game-data"></ul>
+						<div class="fetch">
+							<a href="#FIXME" title="Load More Results" id="fetchBtn">Load More Results</a>
+					</div>
+			<div class="modal">
+					<div class="modal-content">
+							<span class="close">&times;</span>
+							<p class='pop'></p>
+					</div>
+			</div>
+	<!-- player-data ends -->
+	</section>
+	<!-- all player data section ends-->
+	</main>
+	<!--main section end-->
+	<!--footer section start-->
+	<footer>
+		<section class="text-widget">
+				<div class="wrapper">
+						<ul class="bottom-wrap">
+								<li>
+										<h6>NBA Highlights</h6>
+										<p>Lorem, ipsum dolor sit amet consectetur adipis elit. Est consequatur, deserunt dignissimos molestias</p>
+										<p>Lorem ipsum dolor sit amet consectetur adipis elit. Adipisci, optio?</p>
+								</li>
+								<li>
+										<h6>Recent NBA News</h6>
+										<p>Lorem ipsum dolor sit.</p>
+										<p>Lorem ipsum dolor sit. Lorem,ipsum dolor. Lorem, ipsum dolor.</p>
+										<p>Lorem ipsum dolor sit. Lorem,ipsum dolor. Lorem, ipsum dolor.</p>
+										<p>Lorem ipsum dolor sit.</p>
+								</li>
+								<li class="popular-tag">
+										<h6>Popular Tags</h6>
+										<ul class='tags'>
+												<li><a href="#fixme" title="Top Scorer">Top Scorer</a></li>
+												<li><a href="#fixme" title="TurnOver">TurnOver</a></li>
+												<li><a href="#fixme" title="Field Goal">Field Goal</a></li>
+												<li><a href="#fixme" title="Front Court">Front Court</a></li>
+												<li><a href="#fixme" title="Games">Games</a></li>
+												<li><a href="#fixme" title="Stats">Stats</a></li>
+										</ul>
+								</li>
+								<li class="flickr-galery" >
+										<h6>NBA gallery</h6>
+										<ul class='flickr-img'>
+												<li><img src="Players/assets/image/nba1.jpg" alt="basketball"></li>
+												<li><img src="Players/assets/image/nba2.jpg" alt="basketball"></li>
+												<li><img src="Players/assets/image/nba3.jpg" alt="basketball"></li>
+												<li><img src="Players/assets/image/nba4.jpg" alt="basketball"></li>
+												<li><img src="Players/assets/image/nba5.jpg" alt="basketball"></li>
+												<li><img src="Players/assets/image/nba6.jpg" alt="basketball"></li>
+												<li><img src="Players/assets/image/nba7.jpg" alt="basketball"></li>
+												<li><img src="Players/assets/image/nba8.jpg" alt="basketball"></li>
+										</ul>
+								</li>
+						</ul>
+				</div>
+		</section>
+		<section class="footer-bottom">
+			<div class="wrapper">
+					<div class="bottom">
+							<p> &copy; 2021 NBA, All Rights Reserved</p>
+							<ul class='social'>
+									<li><a href="#Fixme" target="_blank" title='Google'>google</a></li>
+									<li><a href="#Fixme" target="_blank" title='Twitter'>twitter</a></li>
+									<li><a href="#Fixme" target="_blank" title='Pintrest'>pintrest</a></li>
+									<li><a href="#Fixme" target="_blank" title='Internet'>internet</a></li>
+									<li><a href="#Fixme" target="_blank" title='Linkdin'>linkdin</a></li>
+									<li><a href="#Fixme" target="_blank" title='Facebook'>facebook</a></li>
+							</ul>
+					</div>
+			</div>
+		</section>	
+	</footer>
+	<!--footer section end-->
+</div>
+<!--container end-->
+<script src="./Players/assets/vendor/jQuery/jquery-3.4.1.min.js"></script>
+<script src="./Players/assets/js/script.js"></script>
 </body>
 </html>

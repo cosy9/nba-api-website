@@ -7,107 +7,163 @@
     <link rel="stylesheet" media="screen" href="assets/vendor/font-awesome/css/all.min.css">
     <link rel="stylesheet" media="screen" href="assets/css/style.css" />
 </head>
-<body onload="homePage()" >
-    <!--container start-->
-    <div class="container">
-        <!--header section start-->
-        <header>
-            <div class="wrapper">
-                <h1><a href="../index.html" title='NBA League'>NBA League</a></h1>
-                <nav>
-                    <div class="hambur">
-                        <span>line</span>
-                        <span>line</span>
-                        <span>line</span>
-                    </div>
-                    <ul class='nav-list'>
-                        <li><a href="../index.html" title='Players'>Players</a></li>
-                        <li><a href="../Teams/index.html" title='Teams'>Teams</a></li>
-                        <li><a href="../Games/index.html" title='Games'>Games</a></li>
-                        <li><a href="../Stats/index.html" title='Stats'>Stats</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <!--header section ends-->
-        <!--main section start-->
-        <main>
-        <!-- all game data section start-->
-            <section class="all-games-data">
-                <div class="wrapper">
-										<!-- game-input start -->
-										<form action="#fixme" method="get">
-												<div class="game-input">
-													<label  for="date">Select by Date</label>
-													<div>
-														<input id="date" type="date" name='date' min="2000-01-01" max="2021-06-04"  value="2000-01-01" onblur="date_valid()" >
-													</div>
-													<div>
-														<input type='button' name='date-input' title="Search by date" 	value="GO">
-													</div>
-													<div class="season-select">
-														<label for="seasons">Select by Seasons</label>
-														<select id="seasons" name="seasons" onblur="Season_valid()">
-															<option selected value="Default">Select Seasons</option>
-															<option value="2000">2000</option>
-															<option value="2001">2001</option>
-															<option value="2002">2002</option>
-															<option value="2003">2003</option>
-															<option value="2004">2004</option>
-															<option value="2005">2005</option>
-															<option value="2006">2006</option>
-															<option value="2007">2007</option>
-															<option value="2008">2008</option>
-															<option value="2009">2009</option>
-															<option value="2010">2010</option>
-															<option value="2011">2011</option>
-															<option value="2012">2012</option>
-															<option value="2013">2013</option>
-															<option value="2014">2014</option>
-															<option value="2015">2015</option>
-															<option value="2016">2016</option>
-															<option value="2017">2017</option>
-															<option value="2018">2018</option>
-															<option value="2019">2019</option>
-															<option value="2020">2020</option>
-															<option value="2021">2021</option>
-														</select>
-													</div>
-													<div>
-														<input type='button' name="seasons-input" title="Search by Seasons" 	value="GO">
-													</div>
-												</div>
-										</form>
-										<!-- game-input ends -->
-										<!-- game-data starts -->
-										<h2>Games data</h2>
-										<ul class="game-data"></ul>
-										<div class="modal">
-												<div class="modal-content">
-														<span class="close">&times;</span>
-														<p>Error Wrong Input</p>
-												</div>
+<body>
+<!--container start-->
+<div class="container">
+<!--header section start-->
+<header>
+	<div class="wrapper">
+			<h1><a href="../index.html" title='NBA League'>NBA League</a></h1>
+			<nav>
+					<div class="hambur">
+							<span>line</span>
+					</div>
+					<ul class='nav-list'>
+							<li><a href="../index.html" title='Players'>Players</a></li>
+							<li><a href="../Teams/index.html" title='Teams'>Teams</a></li>
+							<li><a href="../Games/index.html" title='Games'>Games</a></li>
+							<li><a href="../Stats/index.html" title='Stats'>Stats</a></li>
+					</ul>
+			</nav>
+	</div>
+</header>
+<!--header section ends-->
+<!--main section start-->
+<main>
+<!-- all game data section start-->
+	<section class="all-games-data">
+			<div class="wrapper">
+					<!-- game-input start -->
+					<div class="game-input">
+								<form action="#fixme" method="#fixme">
+										<label  for="date">Select by Date
+											<p class="pop-up2"></p>
+										</label>
+										<div>
+											<input id="date" type="date" name='date' min="2000-01-01" max="2021-06-04"  value="2000-01-01"  >
 										</div>
-										<div class="modal1">
-												<div class="modal-content1">
-														<span class="close1">&times;</span>
-														<p>No games were played on that date</p>
-												</div>
+										<div>
+											<input type='submit' name='date-input' title="Search by date" value="GO">
 										</div>
-										<div class="modal2">
-												<div class="modal-content2">
-														<span class="close2">&times;</span>
-														<p>No games were played on that season</p>
-												</div>
-										</div>
-									<!-- game-data ends -->
-                </div>
-            </section>
-						<!-- all game data section ends-->
-        </main>
-        <!--main section end-->
-    </div>
-    <!--container end-->
-    <script src="assets/js/script.js"></script>
+								</form>
+								<form action="#fixme" method="#fixme">	
+									<div class="season-select">
+										<label for="seasons">Select by Seasons
+											<p class="pop-up"></p>
+										</label>
+										<select id="seasons" name="seasons">
+											<option selected value="Default">Select Seasons</option>
+											<option value="2000">2000</option>
+											<option value="2001">2001</option>
+											<option value="2002">2002</option>
+											<option value="2003">2003</option>
+											<option value="2004">2004</option>
+											<option value="2005">2005</option>
+											<option value="2006">2006</option>
+											<option value="2007">2007</option>
+											<option value="2008">2008</option>
+											<option value="2009">2009</option>
+											<option value="2010">2010</option>
+											<option value="2011">2011</option>
+											<option value="2012">2012</option>
+											<option value="2013">2013</option>
+											<option value="2014">2014</option>
+											<option value="2015">2015</option>
+											<option value="2016">2016</option>
+											<option value="2017">2017</option>
+											<option value="2018">2018</option>
+											<option value="2019">2019</option>
+											<option value="2020">2020</option>
+											<option value="2021">2021</option>
+										</select>
+									</div>
+									<div>
+										<input type='submit' name="seasons-input" title="Search by Seasons" 	value="GO">
+									</div>
+							</form>
+						</div>
+					<!-- game-input ends -->
+					<!-- game-data starts -->
+					<h2>Games data</h2>
+					<ul class="game-data"></ul>
+
+				<div class="fetch">
+            <a href="#FIXME" title="Load More Results" id="fetchBtn">Load More Results</a>
+        </div>
+					<div class="modal">
+							<div class="modal-content">
+									<span class="close">&times;</span>
+									<p class="pop"></p>
+							</div>
+					</div>
+				<!-- game-data ends -->
+			</div>
+	</section>
+	<!-- all game data section ends-->
+			<section class="text-widget">
+				<div class="wrapper">
+						<ul class="bottom-wrap">
+								<li>
+										<h6>NBA Highlights</h6>
+										<p>Lorem, ipsum dolor sit amet consectetur adipis elit. Est consequatur, deserunt dignissimos molestias</p>
+										<p>Lorem ipsum dolor sit amet consectetur adipis elit. Adipisci, optio?</p>
+								</li>
+								<li>
+										<h6>Recent NBA News</h6>
+										<p>Lorem ipsum dolor sit.</p>
+										<p>Lorem ipsum dolor sit. Lorem,ipsum dolor. Lorem, ipsum dolor.</p>
+										<p>Lorem ipsum dolor sit. Lorem,ipsum dolor. Lorem, ipsum dolor.</p>
+										<p>Lorem ipsum dolor sit.</p>
+								</li>
+								<li class="popular-tag">
+										<h6>Popular Tags</h6>
+										<ul class='tags'>
+												<li><a href="#fixme" title="Top Scorer">Top Scorer</a></li>
+												<li><a href="#fixme" title="TurnOver">TurnOver</a></li>
+												<li><a href="#fixme" title="Field Goal">Field Goal</a></li>
+												<li><a href="#fixme" title="Front Court">Front Court</a></li>
+												<li><a href="#fixme" title="Games">Games</a></li>
+												<li><a href="#fixme" title="Stats">Stats</a></li>
+										</ul>
+								</li>
+								<li class="flickr-galery" >
+										<h6>NBA gallery</h6>
+										<ul class='flickr-img'>
+												<li><img src="../Players/assets/image/nba1.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba2.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba3.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba4.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba5.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba6.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba7.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba8.jpg" alt="basketball"></li>
+										</ul>
+								</li>
+						</ul>
+				</div>
+		</section>
+</main>
+<!--main section end-->
+<!--footer section start-->
+<footer>
+		<div class="wrapper">
+				<div class="bottom">
+						<p> &copy; 2021 NBA, All Rights Reserved</p>
+						<ul class='social'>
+								<li><a href="#Fixme" target="_blank" title='Google'>google</a></li>
+								<li><a href="#Fixme" target="_blank" title='Twitter'>twitter</a></li>
+								<li><a href="#Fixme" target="_blank" title='Pintrest'>pintrest</a></li>
+								<li><a href="#Fixme" target="_blank" title='Internet'>internet</a></li>
+								<li><a href="#Fixme" target="_blank" title='Linkdin'>linkdin</a></li>
+								<li><a href="#Fixme" target="_blank" title='Facebook'>facebook</a></li>
+						</ul>
+				</div>
+		</div>
+</footer>
+<!--footer section end-->
+</div>
+<!--container end-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>

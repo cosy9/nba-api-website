@@ -53,9 +53,11 @@ function showSpecificData() {
   Array.from(listItem).forEach(function (element) {
     var listTxt = element.getElementsByTagName("p")[0].innerText.toLowerCase();
     if (listTxt.includes(inputval)) {
-      element.style.display = 'block';
+      element.classList.remove('list-not-active')
+      element.classList.add('list-active')
     } else {
-      element.style.display = 'none';
+      element.classList.remove('list-active')
+      element.classList.add('list-not-active')
     }
   })
 }

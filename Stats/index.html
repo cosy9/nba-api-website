@@ -7,7 +7,7 @@
     <link rel="stylesheet" media="screen" href="assets/vendor/font-awesome/css/all.min.css">
     <link rel="stylesheet" media="screen" href="assets/css/style.css" />
 </head> 
-<body onload="WhenpageLoad()">
+<body>
     <!--container start-->
     <div class="container">
         <!--header section start-->
@@ -16,8 +16,6 @@
                 <h1><a href="../index.html" title='NBA League'>NBA League</a></h1>
                 <nav>
                     <div class="hambur">
-                        <span>line</span>
-                        <span>line</span>
                         <span>line</span>
                     </div>
                     <ul class='nav-list'>
@@ -36,11 +34,13 @@
             <section class="all-stats-data">
                 <div class="wrapper">
 										<!-- stats-input start -->
-										<form action="#fixme" method="get">
+										<form action="#fixme" method="#fixme">
 												<div class="search-only-by-player">
 															<div class="season-select">
-																<label for="seasons-1">Select Season</label>
-																<select id="seasons-1" name="seasons-1" onblur="Season_valid()">
+																<label for="seasons-1">Select Season
+																	<p class="pop-up2"></p>
+																</label>
+																<select id="seasons-1" name="seasons-1">
 																	<option selected value="Default">Select Seasons</option>
 																	<option value="2000">2000</option>
 																	<option value="2001">2001</option>
@@ -67,10 +67,11 @@
 																</select>
 														</div>
 														<div class='player-input1'>
-															<input type="text" name="player-input1" placeholder="Player to search" onblur="player_validation1()">
+															<input type="text" name="player-input1" placeholder="Player to search">
+															<p class="pop-up3"></p>
 														</div>
 														<div>
-															<input type='button' name="name-submit1" title="Search stats" 	value="Search" onclick="searchPlayer()">
+															<input type='submit' name="name-submit1" title="Search stats" 	value="Search">
 														</div>
 												</div>
 										</form>
@@ -78,24 +79,80 @@
 										<!-- stats-data starts -->
 										<h2>Stats data</h2>
 										<ul class="stats-data"></ul>
+															<div class="fetch">
+            										<a href="#FIXME" title="Load More Results" id="fetchBtn">Load More Results</a>
+        											</div>
 										<div class="modal">
 												<div class="modal-content">
 														<span class="close">&times;</span>
-														<p>Error Wrong Input</p>
-												</div>
-										</div>
-										<div class="modal1">
-												<div class="modal-content1">
-														<span class="close1">&times;</span>
-														<p>Player did not played that season</p>
+														<p class="pop"></p>
 												</div>
 										</div>
 									<!-- stats-data ends -->
                 </div>
             </section>
 						<!-- all stats data section ends-->
+						<section class="text-widget">
+				<div class="wrapper">
+						<ul class="bottom-wrap">
+								<li>
+										<h6>NBA Highlights</h6>
+										<p>Lorem, ipsum dolor sit amet consectetur adipis elit. Est consequatur, deserunt dignissimos molestias</p>
+										<p>Lorem ipsum dolor sit amet consectetur adipis elit. Adipisci, optio?</p>
+								</li>
+								<li>
+										<h6>Recent NBA News</h6>
+										<p>Lorem ipsum dolor sit.</p>
+										<p>Lorem ipsum dolor sit. Lorem,ipsum dolor. Lorem, ipsum dolor.</p>
+										<p>Lorem ipsum dolor sit. Lorem,ipsum dolor. Lorem, ipsum dolor.</p>
+										<p>Lorem ipsum dolor sit.</p>
+								</li>
+								<li class="popular-tag">
+										<h6>Popular Tags</h6>
+										<ul class='tags'>
+												<li><a href="#fixme" title="Top Scorer">Top Scorer</a></li>
+												<li><a href="#fixme" title="TurnOver">TurnOver</a></li>
+												<li><a href="#fixme" title="Field Goal">Field Goal</a></li>
+												<li><a href="#fixme" title="Front Court">Front Court</a></li>
+												<li><a href="#fixme" title="Games">Games</a></li>
+												<li><a href="#fixme" title="Stats">Stats</a></li>
+										</ul>
+								</li>
+								<li class="flickr-galery" >
+										<h6>NBA gallery</h6>
+										<ul class='flickr-img'>
+												<li><img src="../Players/assets/image/nba1.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba2.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba3.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba4.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba5.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba6.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba7.jpg" alt="basketball"></li>
+												<li><img src="../Players/assets/image/nba8.jpg" alt="basketball"></li>
+										</ul>
+								</li>
+						</ul>
+				</div>
+		</section>
         </main>
         <!--main section end-->
+				<!--footer section start-->
+<footer>
+		<div class="wrapper">
+				<div class="bottom">
+						<p> &copy; 2021 NBA, All Rights Reserved</p>
+						<ul class='social'>
+								<li><a href="#Fixme" target="_blank" title='Google'>google</a></li>
+								<li><a href="#Fixme" target="_blank" title='Twitter'>twitter</a></li>
+								<li><a href="#Fixme" target="_blank" title='Pintrest'>pintrest</a></li>
+								<li><a href="#Fixme" target="_blank" title='Internet'>internet</a></li>
+								<li><a href="#Fixme" target="_blank" title='Linkdin'>linkdin</a></li>
+								<li><a href="#Fixme" target="_blank" title='Facebook'>facebook</a></li>
+						</ul>
+				</div>
+		</div>
+</footer>
+<!--footer section end-->
     </div>
     <!--container end-->
     <script src="assets/js/script.js"></script>
